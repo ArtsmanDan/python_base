@@ -13,11 +13,11 @@ def generate_numbers(number):
 
 
 def generate_file(file, min, max, size):
-    f = open('file.txt', 'w')  # открытие в режиме записи
+    f = open(file, 'w')
     for item in range(size):
         f.write(str(randint(min, max)))
         f.write('\n')
-    f.close()  # закрытие файла
+    f.close()
 
 
 def numbers_file2list(file):
@@ -26,24 +26,25 @@ def numbers_file2list(file):
     int_list = []
     for item in str_list:
         int_list.append(int(item))
-    f.close()
     return int_list
 
 
 def multiplication_numbers(list_numbers, position_numbers):
     result = 1
     for item in position_numbers:
-        result *= list_numbers[item]
+        if 0 <= item < len(list_numbers):
+            # print(list_numbers[item])
+            result *= list_numbers[item]
     return result
 
 
-position_list_size = 3
+position_list_size = 5
 start_position = 0
 file_name = 'file.txt'
 n = int(input('Введите число: '))
 list = generate_numbers(n)
 print('список', list)
-generate_file(file_name, start_position, len(list), position_list_size)
+generate_file(file_name, start_position, len(list)-1, position_list_size)
 position_list = numbers_file2list(file_name)
 print('список позиций', position_list)
 print('произведение = ', multiplication_numbers(list, position_list))
