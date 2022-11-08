@@ -15,3 +15,15 @@ while i <= n:
     c = c + b
     i = i + 1
     print(c)
+sum = 0
+for i in range(10, 88 + 1):
+    sum += i
+print(sum)
+
+sum = 0
+i = 10
+while i <= 88:
+    temp = sum
+    sum += i
+    i += 1
+    print(temp, "+", i, " = ", sum)
