@@ -1,0 +1,64 @@
+# Создайте программу для игры с конфетами человек против человека.
+#
+# Условие задачи: На столе лежит 2021 конфета. Играют два игрока делая ход друг после друга.
+# Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем 28 конфет.
+# Все конфеты оппонента достаются сделавшему последний ход.
+# Сколько конфет нужно взять первому игроку, чтобы забрать все конфеты у своего конкурента?
+# a) Добавьте игру против бота
+# б) Подумайте, как наделить бота "интеллектом"
+
+import itertools
+import random
+
+number_candies = 56
+min_candies = 1
+max_candies = 28
+last_x = 0
+
+name_game = 'Конфетный счастливчик'
+descript = f'''Условие задачи: На столе лежит {number_candies} конфета. Играют два игрока делая ход друг после друга. 
+            Первый ход определяется жеребьёвкой. За один ход можно забрать не более чем {max_candies} конфет. 
+            Все конфеты оппонента достаются сделавшему последний ход. '''
+
+
+def bot_go():
+    last_x = 1
+    if number_candies < max_candies + 1:
+        last_x = number_candies
+    else:
+        count = number_candies // max_candies
+        last_x = number_candies - ((count * max_candies) + 1)
+        if last_x == -1:
+            last_x = max_candies - 1
+        if last_x == 0:
+            last_x = max_candies
+    #return random.randint(min_candies, max_candies)
+    return last_x
+
+
+print(name_game)
+print(descript)
+
+list_player = ['player1', 'bot']
+foo = itertools.cycle((0, 1))
+who_plays = next(foo)
+for i in range(random.randint(1, 10)):
+    who_plays = next(foo)
+while number_candies > 0:
+    print(f'осталось {number_candies} конфет')
+    print(f'Ходит игрок {list_player[who_plays]}')
+    print(f'Введите количество конфет от {min_candies} до {max_candies}')
+    if list_player[who_plays] == 'bot':
+        last_x = bot_go()
+    else:
+        last_x = int(input(f'{list_player[who_plays]}, введите количество конфет которое вы возьмете: '))
+    if last_x > max_candies or last_x < min_candies or last_x > number_candies:
+        print('Ошибка')
+        continue
+    print(f'{list_player[who_plays]} взял {last_x} конфет')
+    number_candies -= last_x
+    if number_candies == 0:
+        break
+    who_plays = next(foo)
+print(f'осталось {number_candies} конфет')
+print(f'победитель игры {list_player[who_plays]}, Последний его ход {last_x} конфет')
