@@ -43,8 +43,8 @@ data1 = 'В целом, конечно, высококачественный п�
        ' а также представители современных социальных резервов формируют глобальную экономическую сеть' \
        ' и при этом — рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок.'
 data2 = 'ddddddddsffffffffffffffffeeeeeeeeeeeeeeeeeeeeeggggggggggggbbbbbbbbbbbbvvvvvvvvvvvvvvvvrrrrrrrrrgfggggggggggggggth'
-with open('sun.bmp') as file_data:
-    data3 = file_data.read()
+with open('Love_Night1280x853-24.bmp') as file_data:
+    data3 = file_data.read(10240)
     file_data.close()
 
 data = data3

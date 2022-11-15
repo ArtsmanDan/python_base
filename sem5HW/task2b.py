@@ -10,9 +10,9 @@
 import itertools
 import random
 
-number_candies = 56
+number_candies = 2256
 min_candies = 1
-max_candies = 28
+max_candies = 1128
 last_x = 0
 
 name_game = 'Конфетный счастливчик'

@@ -7,9 +7,12 @@
 # •	25, 5 -> да
 # •	8,9 -> нет
 
-a = 3
+a = 4
 b = 9
-if a > b:y = b, b = a, a = y
+if a > b:
+    y = b
+    b = a
+    a = y
 if (a ** 2) == b:
     print(a, ",", b, end=" -> Да ")
 else:
